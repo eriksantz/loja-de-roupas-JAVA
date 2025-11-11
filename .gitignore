@@ -1,0 +1,13 @@
+# Pasta de build compilado
+/build/
+
+# Pasta de distribuição (o .jar final)
+/dist/
+
+# Arquivos de cache e específicos do NetBeans
+/nbproject/private/
+
+# Arquivos gerados pelo NetBeans
+/nbbuild/
+/nbdist/
+.nb-gradle/
