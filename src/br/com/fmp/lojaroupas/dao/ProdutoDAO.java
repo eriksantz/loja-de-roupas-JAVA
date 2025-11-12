@@ -1,6 +1,6 @@
 package br.com.fmp.lojaroupas.dao;
 
-// Importações necessárias
+
 import br.com.fmp.lojaroupas.model.Acessorios;
 import br.com.fmp.lojaroupas.model.Categoria;
 import br.com.fmp.lojaroupas.model.Produto;
