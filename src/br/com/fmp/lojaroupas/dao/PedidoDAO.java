@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List; // <-- Esta é a que falta!
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;

@@ -4,12 +4,11 @@
  */
 package br.com.fmp.lojaroupas.view;
 
-// --- Verifique estas importações ---
-import br.com.fmp.lojaroupas.dao.FornecedorDAO; // <--- MUDOU
-import br.com.fmp.lojaroupas.model.Fornecedor; // <--- MUDOU
-import java.util.Date; // (Para os botões)
+import br.com.fmp.lojaroupas.dao.FornecedorDAO; 
+import br.com.fmp.lojaroupas.model.Fornecedor; 
+import java.util.Date;
 import java.util.List;
-import javax.swing.JOptionPane; // (Para os botões)
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -52,13 +51,12 @@ public class TelaFornecedor extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         txtTelefone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        tblCategorias = new javax.swing.JTable();
         tblFornecedor = new javax.swing.JScrollPane();
         tblFornecedores = new javax.swing.JTable();
 
         jTextField2.setText("jTextField2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome");
 
@@ -173,31 +171,6 @@ public class TelaFornecedor extends javax.swing.JFrame {
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
-        tblCategorias.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "NOME", "DESCRIÇÃO"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tblCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblCategoriasMouseClicked(evt);
-            }
-        });
-
         tblFornecedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -234,16 +207,10 @@ public class TelaFornecedor extends javax.swing.JFrame {
                         .addComponent(tblFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tblCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tblCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,20 +293,6 @@ public class TelaFornecedor extends javax.swing.JFrame {
 
     readJTable();
     }//GEN-LAST:event_btnAtualizarActionPerformed
-
-    private void tblCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCategoriasMouseClicked
-
-        if (tblCategorias.getSelectedRow() != -1) {
-
-  
-            String nome = tblCategorias.getValueAt(tblCategorias.getSelectedRow(), 1).toString();
-            String descricao = tblCategorias.getValueAt(tblCategorias.getSelectedRow(), 2).toString();
-
-         
-            txtNome.setText(nome);
-            txtContato.setText(descricao);
-        }
-    }//GEN-LAST:event_tblCategoriasMouseClicked
 
     private void tblFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFornecedoresMouseClicked
 // Verifica se uma linha foi selecionada
@@ -427,7 +380,6 @@ public class TelaFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTable tblCategorias;
     private javax.swing.JScrollPane tblFornecedor;
     private javax.swing.JTable tblFornecedores;
     private javax.swing.JTextField txtContato;
@@ -440,17 +392,16 @@ public class TelaFornecedor extends javax.swing.JFrame {
         
         
         DefaultTableModel modelo = (DefaultTableModel) tblFornecedores.getModel();
-        modelo.setNumRows(0); // Limpa a tabela
+        modelo.setNumRows(0);
 
-        // 2. Chama o DAO de fornecedor
         FornecedorDAO dao = new FornecedorDAO();
-        List<Fornecedor> fornecedores = dao.read(); // <-- MUDOU
+        List<Fornecedor> fornecedores = dao.read();
 
-        // 3. Percorre a lista de fornecedores
-        for (Fornecedor f : fornecedores) { // <-- MUDOU
+      
+        for (Fornecedor f : fornecedores) { 
 
-            // 4. Adiciona as 5 colunas
-            modelo.addRow(new Object[]{ // <-- MUDOU
+            
+            modelo.addRow(new Object[]{ 
                 f.getId(),
                 f.getNome(),
                 f.getContato(),
